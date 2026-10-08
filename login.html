@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="storage/img/Fav.ico" type="image/x-icon">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="c5QdEDQ4QCVkDv1eFwAoYvC9aiIM7wsOmTdR4XTR">
+    <link rel="dns-prefetch" href="https://www.google.com/">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Cloudflare Turnstile -->
+
+<!-- End Cloudflare Turnstile -->    <title>
+        Vape Ghost Client    </title>
+    <meta name="description" content="Like steroids for Minecraft. Vape includes the highest quality Minecraft ghost client features, and will assure that you dominate every opponent.">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="http://fonts.gstatic.com/">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/redesignb1e5.css?id=2ac9205197d4ac233df0">
+        <style>
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .main_block {
+            display: flex;
+            flex: auto;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="container" style="padding:10px"><p style="opacity:.7">Demo login — na GitHub Pages bez backendu jen vzhled. Formulář nikam neodesílá.</p></div>
+<header>
+        <div class="container">
+            <div class="header_row">
+                <div class="hover_mobile"></div>
+                <div class="logo_header">
+                    <a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+        <section class="main_block auth">
+        <div class="container">
+
+                        <div class="auth-nav-row">
+                <a href="index.html"><img src="img/back.svg" alt="back-icon"></a> Login to continue...
+            </div>
+                        <div class="login-form-wrapper">
+                <p id="auth-err" style="display:none;color:#ff6b6b"></p><form action="pricing.html" id="login" method="GET" onsubmit="return pageLogin(event)">
+                    <input type="hidden" name="_token" value="c5QdEDQ4QCVkDv1eFwAoYvC9aiIM7wsOmTdR4XTR">                    <div class="input-container">
+                        <input id="user_login" name="login" autocomplete="off" class="input " type="text" placeholder="Username or Email">
+                        
+                    </div>
+                    <div class="input-container">
+                        <input id="user_pass" name="password" class="input " type="password"
+                               placeholder="Password">
+                        
+                    </div>
+                    <div class="actions-wrapper">
+                        <label class="checkbox-container">
+                            <span class="label-text">Remember me</span>
+                            <input type="checkbox" name="remember" >
+                            <span class="checkmark"></span>
+                        </label>
+                        <a href="password/reset.html" class="forgot-pass">Forgot password?</a>
+                    </div>
+                    
+                    <div class="input-container">
+                        <button class="login-submit">
+                            Login
+                        </button>
+                    </div>
+                    <div class="login-form-register-link">
+                        New to Vape? <a href="register.html">Create an account</a>
+                    </div>
+                </form>
+                <div class="fa_window-login">
+                    <div class="enter_code_block-login">
+                        <div class="code_sub">Enter the one time password <br> from your app</div>
+                        <form action="#" method="POST">
+                            <input type="text" class="fa_code-login" placeholder="xxx xxx">
+                            <div class="fa_error"></div>
+                            <button type="submit" class="blue_btn two-fa-login-submit">Submit</button>
+                        </form>
+                        <div class="reset_block">
+                            <a href="login.html">Lost Device?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay_login_window"></div>
+            </div>
+        </div>
+    </section>
+    <script src="js/redesign4c41.js?id=94fc16c4e24c112e2482" type="text/javascript"></script>
+        
+    </div>
+
+<script>
+function vapeGetUsers(){try{return JSON.parse(localStorage.getItem('vape_users')||'{}');}catch(e){return{};}}
+function vapeSaveUsers(u){try{localStorage.setItem('vape_users',JSON.stringify(u));}catch(e){}}
+function vapeEnc(p){try{return btoa(unescape(encodeURIComponent(p)));}catch(e){return p;}}
+function vapeErr(m){var e=document.getElementById('vape-err')||document.getElementById('auth-err');if(e){e.textContent=m;e.style.display='block';}else{alert(m);}}
+function vapeDoRegister(u,email,pw){
+ if(!u){vapeErr('Enter username.');return false;}
+ if(!email||email.indexOf('@')<0){vapeErr('Enter valid email.');return false;}
+ if(!pw||pw.length<4){vapeErr('Password must be at least 4 characters.');return false;}
+ var users=vapeGetUsers();
+ if(users[u]){vapeErr('Username already registered. Login instead.');return false;}
+ users[u]={email:email,pw:vapeEnc(pw)};
+ vapeSaveUsers(users);
+ try{localStorage.setItem('vape_user',u);}catch(e){}
+ return true;}
+function vapeDoLogin(u,pw){
+ if(!u){vapeErr('Enter username.');return false;}
+ if(!pw){vapeErr('Enter password.');return false;}
+ var users=vapeGetUsers();
+ if(!users[u]){for(var k in users){if(users[k].email===u){u=k;break;}}}
+ if(!users[u]){vapeErr('Account not found. Register first.');return false;}
+ if(users[u].pw!==vapeEnc(pw)){vapeErr('Wrong password.');return false;}
+ try{localStorage.setItem('vape_user',u);}catch(e){}
+ return true;}
+</script><script>
+function pageLogin(ev){ev.preventDefault();
+ var i=document.getElementById('user_login');
+ var pw=document.getElementById('user_pass');
+ var u=i?i.value.trim():'';
+ if(vapeDoLogin(u,pw?pw.value:'')){location.href='pricing.html';}return false;}
+</script></body>
+
+
+</html>

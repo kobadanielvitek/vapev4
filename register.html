@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="storage/img/Fav.ico" type="image/x-icon">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="c5QdEDQ4QCVkDv1eFwAoYvC9aiIM7wsOmTdR4XTR">
+    <link rel="dns-prefetch" href="https://www.google.com/">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+<!-- Cloudflare Turnstile -->
+
+<!-- End Cloudflare Turnstile -->    <title>
+        Vape Ghost Client    </title>
+    <meta name="description" content="Like steroids for Minecraft. Vape includes the highest quality Minecraft ghost client features, and will assure that you dominate every opponent.">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="http://fonts.gstatic.com/">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/redesignb1e5.css?id=2ac9205197d4ac233df0">
+        <style>
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .main_block {
+            display: flex;
+            flex: auto;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <div class="container">
+            <div class="header_row">
+                <div class="hover_mobile"></div>
+                <div class="logo_header">
+                    <a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+        <section class="main_block auth">
+        <div class="container">
+
+                        <div class="auth-nav-row">
+                <a href="index.html"><img src="img/back.svg" alt="back-icon"></a> Create an account...
+            </div>
+                        <div class="login-form-wrapper">
+                <p id="auth-err" style="display:none;color:#ff6b6b"></p><form action="pricing.html" id="loginform" method="GET" onsubmit="return pageRegister(event)">
+                    <input type="hidden" name="_token" value="c5QdEDQ4QCVkDv1eFwAoYvC9aiIM7wsOmTdR4XTR">                    <div class="input-container">
+                        <input id="username" name="username" autocomplete="off"
+                               class="input "
+                               type="text"
+                                value=""                                placeholder="Username">
+                    </div>
+                    <div class="input-container">
+                        <input id="email" name="email" autocomplete="off" class="input "
+                               type="text"
+                                value=""                               placeholder="Email">
+                    </div>
+                    <div class="input-container">
+                        <input id="email-confirm" name="email_confirmation" autocomplete="off" class="input"
+                               type="text"
+                               placeholder="Confirm email">
+                    </div>
+                    <div class="form-inputs-separator"></div>
+                    <div class="input-container">
+                        <input id="user_pass" name="password"
+                               class="input "
+                               type="password"
+                               placeholder="Password">
+                    </div>
+                    <div class="input-container">
+                        <input id="password-confirm" name="password_confirmation"
+                               class="input "
+                               type="password"
+                               placeholder="Confirm Password">
+                    </div>
+                    <div class="register-form-login-link">
+                        or <a href="login.html">sign in</a> instead
+                    </div>
+                    
+                    <div class="input-container">
+                        <button class="login-submit">
+                            Create account
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script src="js/redesign4c41.js?id=94fc16c4e24c112e2482" type="text/javascript"></script>
+    </div>
+
+<script>
+function vapeGetUsers(){try{return JSON.parse(localStorage.getItem('vape_users')||'{}');}catch(e){return{};}}
+function vapeSaveUsers(u){try{localStorage.setItem('vape_users',JSON.stringify(u));}catch(e){}}
+function vapeEnc(p){try{return btoa(unescape(encodeURIComponent(p)));}catch(e){return p;}}
+function vapeErr(m){var e=document.getElementById('vape-err')||document.getElementById('auth-err');if(e){e.textContent=m;e.style.display='block';}else{alert(m);}}
+function vapeDoRegister(u,email,pw){
+ if(!u){vapeErr('Enter username.');return false;}
+ if(!email||email.indexOf('@')<0){vapeErr('Enter valid email.');return false;}
+ if(!pw||pw.length<4){vapeErr('Password must be at least 4 characters.');return false;}
+ var users=vapeGetUsers();
+ if(users[u]){vapeErr('Username already registered. Login instead.');return false;}
+ users[u]={email:email,pw:vapeEnc(pw)};
+ vapeSaveUsers(users);
+ try{localStorage.setItem('vape_user',u);}catch(e){}
+ return true;}
+function vapeDoLogin(u,pw){
+ if(!u){vapeErr('Enter username.');return false;}
+ if(!pw){vapeErr('Enter password.');return false;}
+ var users=vapeGetUsers();
+ if(!users[u]){for(var k in users){if(users[k].email===u){u=k;break;}}}
+ if(!users[u]){vapeErr('Account not found. Register first.');return false;}
+ if(users[u].pw!==vapeEnc(pw)){vapeErr('Wrong password.');return false;}
+ try{localStorage.setItem('vape_user',u);}catch(e){}
+ return true;}
+</script><script>
+function pageRegister(ev){ev.preventDefault();
+ var i=document.getElementById('username');
+ var e=document.getElementById('email');
+ var pw=document.getElementById('user_pass');
+ var pc=document.getElementById('password-confirm');
+ var u=i?i.value.trim():'';
+ if(pc&&pw&&pc.value!==pw.value){vapeErr('Passwords do not match.');return false;}
+ if(vapeDoRegister(u,e?e.value.trim():'',pw?pw.value:'')){location.href='pricing.html';}return false;}
+</script></body>
+
+
+</html>
